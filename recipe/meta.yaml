@@ -26,6 +26,7 @@ requirements:
     - cython
     - pkg-config
     - numpy  # ensure numpy headers are available during cythonization
+    - ninja
   host:
     - python
     - pip
