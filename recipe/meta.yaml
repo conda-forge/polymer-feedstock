@@ -21,7 +21,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - cython
-    - meson-python
+    # - meson-python
     - pkg-config
     - numpy  # ensure numpy headers are available during cythonization
   host:
