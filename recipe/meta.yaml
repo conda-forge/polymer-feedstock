@@ -10,7 +10,13 @@ source:
 
 build:
   number: 1
-  script: {{ PYTHON }} -m pip install . -vv --no-build-isolation --config-settings=setup-args="${MESON_ARGS}"
+  script: |
+    if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
+      {{ PYTHON }} -m pip install . -vv --no-build-isolation \
+        --config-settings=setup-args=--cross-file=${MESON_CROSS_FILE}
+    else
+      {{ PYTHON }} -m pip install . -vv --no-build-isolation
+    fi
   skip: True  # [py<311]
   entry_points:
     - polymer = polymer.cli:main
