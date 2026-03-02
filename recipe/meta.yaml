@@ -21,8 +21,11 @@ requirements:
     - {{ stdlib('c') }}
     - cython
     - meson-python
-    - numpy  # ensure headers are available during cythonization
     - pkg-config
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    # ensure numpy headers are available during cythonization
+    - numpy                                  # [build_platform != target_platform]
   host:
     - python
     - pip
