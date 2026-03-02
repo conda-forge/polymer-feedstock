@@ -12,7 +12,7 @@ build:
   number: 1
   script:
     - {{ PYTHON }} -m pip install . -vv  # [build_platform == target_platform]
-    - meson ${MESON_ARGS} builddir/  # [build_platform != target_platform]
+    - meson setup ${MESON_ARGS} builddir/  # [build_platform != target_platform]
     # - $PYTHON -m pip install . -vv --no-deps --ignore-installed -Csetup-args="${MESON_ARGS}"  # [build_platform != target_platform]
   skip: True  # [py<311 or build_platform == target_platform]
   entry_points:
