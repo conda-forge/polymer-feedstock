@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-# Ensure host python is found first
+# ensure host python is found first
 export PATH="$PREFIX/bin:$PATH"
 
 meson setup builddir \
