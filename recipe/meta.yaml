@@ -13,7 +13,7 @@ build:
   script:
     - {{ PYTHON }} -m pip install . -vv      # [build_platform == target_platform]
     - meson setup ${MESON_ARGS} builddir/    # [build_platform != target_platform]
-    - meson install -C builddir              # [build_platform != target platform]
+    - meson install -C builddir              # [build_platform != target_platform]
   skip: True  # [py<311]
   entry_points:
     - polymer = polymer.cli:main
