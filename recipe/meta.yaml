@@ -37,7 +37,7 @@ requirements:
     - python
     - cython
     - h5py
-    - hygeos-core
+    - hygeos-core <1.3.0
     - eoread
     - eotools
     - netcdf4
