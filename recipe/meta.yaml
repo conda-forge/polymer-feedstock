@@ -9,19 +9,24 @@ source:
   sha256: 6b7cfb1593094ea03fc2176d57db0bede893c32724b65eee0013691704d2c133
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
+  script:
+    - {{ PYTHON }} -m pip install . -vv      # [build_platform == target_platform]
+    - meson setup ${MESON_ARGS} builddir/    # [build_platform != target_platform]
+    - meson install -C builddir              # [build_platform != target_platform]
   skip: True  # [py<311]
   entry_points:
     - polymer = polymer.cli:main
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - cython
-    - meson-python
-    - numpy  # ensure headers are available during cythonization
+    - ninja  # needed to make osx_arm64 build succeed
+    - numpy  # ensure numpy headers are available during cythonization
     - pkg-config
   host:
     - python
