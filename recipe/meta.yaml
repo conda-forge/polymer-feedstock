@@ -9,7 +9,7 @@ source:
   sha256: 6b7cfb1593094ea03fc2176d57db0bede893c32724b65eee0013691704d2c133
 
 build:
-  number: 2
+  number: 3
   script:
     - {{ PYTHON }} -m pip install . -vv      # [build_platform == target_platform]
     - meson setup ${MESON_ARGS} builddir/    # [build_platform != target_platform]
